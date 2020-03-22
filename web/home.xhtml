@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+<link rel="stylesheet" type="text/css" href="resources/Main.css" />
+<body>
+<div class="home_header" id="head"><div style="float: left;padding-left: 25%;"> P3213</div> Данков Антон Игоревич  <div style="float: right;padding-right: 20%;">Вариант 213970</div></div>
+<div id="clock"></div>
+<div class="home_header" id="bottom">
+<h:form id="CreateLoggin">
+    <br/>
+    #{Userses.pointBean.testSt()}
+    Идентификатор: <h:inputText id="name" name="name" value="" />
+    <h:commandButton value="Переход" action = "#{LoggIn.loggin}" />
+</h:form>
+</div>
+<script type="text/javascript" src="resources/home.js"></script>
+</body>
+
+</html>

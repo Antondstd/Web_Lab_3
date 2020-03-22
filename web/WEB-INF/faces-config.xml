@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+
+<faces-config version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+    http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+
+    <managed-bean>
+    <managed-bean-name>NavigationController</managed-bean-name>
+    <managed-bean-class>NavigationController</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <managed-property>
+        <property-name>pageName</property-name>
+        <!--<property-class>String</property-class>-->
+        <value>#{param.pageName}</value>
+    </managed-property>
+</managed-bean>
+    <managed-bean>
+    <managed-bean-name>User</managed-bean-name>
+    <managed-bean-class>User</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+</managed-bean>
+    <managed-bean>
+        <managed-bean-name>Userses</managed-bean-name>
+        <managed-bean-class>Userses</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+        <managed-property>
+            <property-name>pointBean</property-name>
+            <value>#{PointBean}</value>
+        </managed-property>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>LoggIn</managed-bean-name>
+        <managed-bean-class>LoggInServlet</managed-bean-class>
+        <managed-bean-scope>application</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+    <managed-bean-name>Point</managed-bean-name>
+    <managed-bean-class>Point</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+</managed-bean>
+    <managed-bean>
+        <managed-bean-name>PointBean</managed-bean-name>
+        <managed-bean-class>PointBean</managed-bean-class>
+        <managed-bean-scope>application</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>Testview</managed-bean-name>
+        <managed-bean-class>TestView</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+
+        <navigation-case>
+            <from-action>#{Userses.validation}</from-action>
+            <from-outcome>fail</from-outcome>
+            <to-view-id>/home.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
+</faces-config>

@@ -1,0 +1,21 @@
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<!DOCTYPE hibernate-configuration PUBLIC-->
+<!--        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"-->
+<!--        "http://hibernate.org/dtd/hibernate-configuration-3.0.dtd">-->
+<!--<hibernate-configuration>-->
+<!--    <session-factory>-->
+<!--        <property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>-->
+<!--        <property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:orbis</property>-->
+<!--        <property name="hibernate.connection.username">s263971</property>-->
+<!--        <property name="hibernate.connection.password">njs298</property>-->
+<!--        <property name="hibernate.connection.pool_size">1</property>-->
+<!--        <property name="hibernate.current_session_context_class">thread</property>-->
+<!--        <property name="hibernate.show_sql">true</property>-->
+<!--        <property name="hibernate.dialect">org.hibernate.dialect.Oracle12cDialect</property>-->
+<!--        <mapping class="Point"/>-->
+<!--        <mapping class="Result"/>-->
+<!--        <mapping class="User"/>-->
+<!--        <property name="hibernate.hbm2ddl.auto" value="update"/>-->
+
+<!--    </session-factory>-->
+<!--</hibernate-configuration>-->

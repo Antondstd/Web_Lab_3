@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+<h:body>
+    <f:view>
+<div class="home_header" style="padding: 0px 0px 20px 0px;">
+    <h:message for="variableX" class="message" />
+    <div id="hiddenMessageR"></div>
+    <br/>
+    <h:message for="variableR" class="message" />
+    <div id="point_form" align="center">
+        <h:form id="PointForm">
+            X:
+            <h:inputText id="variableX" name="variableX" required="true" styleClass="inputX" maxlength="8" label="X"  requiredMessage="Введите значение X" >
+                <f:validator validatorId = "ValidateX" />
+            </h:inputText>
+            Y:
+            <h:selectOneMenu id="variableY" label="Y" value = "#{Point.y}">
+                <f:selectItem itemValue = "-5" itemLabel = "-5" />
+                <f:selectItem itemValue = "-4" itemLabel = "-4" />
+                <f:selectItem itemValue = "-3" itemLabel = "-3" />
+                <f:selectItem itemValue = "-2" itemLabel = "-2" />
+                <f:selectItem itemValue = "-1" itemLabel = "-1" />
+                <f:selectItem itemValue = "0" itemLabel = "0" />
+                <f:selectItem itemValue = "1" itemLabel = "1" />
+                <f:selectItem itemValue = "2" itemLabel = "2" />
+                <f:selectItem itemValue = "3" itemLabel = "3" />
+            </h:selectOneMenu>
+            R:
+            <h:inputText id="variableR" name="variableR" maxlength="8">
+                <f:validator validatorId = "ValidateR"/>
+            </h:inputText>
+            <h:commandButton type="submit"
+                             value="Пуск"
+                             action="#{PointBean.addPagePoint}"
+                             styleClass="link-go"/>
+            <p:remoteCommand name="needList" action="#{PointBean.getList()}" partialSubmit="true" process="@this" update="TablePoints"/>
+            <p:remoteCommand name="sendClick" action="#{PointBean.addClickPoint()}" partialSubmit="true" process="@this" update="TablePoints"/>
+
+
+        </h:form>
+    </div>
+</div>
+        <p:outputPanel>
+<div id="graph">
+    <canvas id="canvas" style="background-color:#ffffff;" width="400" height="300"/>
+    <br/>
+    <p id="movelog">X: * / Y: * / R: *</p>
+</div>
+        </p:outputPanel>
+
+        <div class="home_header" id="bottom">
+            #{PointBean.userses.validation()}<br/>
+            Таблица результатов для пользователя #{Userses.name}. <a href="unlogin">Разлогиниться</a>
+        <h:dataTable value="#{PointBean.tableList}" var="res"
+                     styleClass="PointTable"
+                     rules="all" id="TablePoints">
+            <h:column>
+                <f:facet name="header">X</f:facet>
+                #{res.point.x}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Y </f:facet>
+                #{res.point.y}
+            </h:column>
+            <h:column>
+                <f:facet name="header">R</f:facet>
+                #{res.r}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Результат</f:facet>
+                #{res.StringShot()}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Время</f:facet>
+                #{res.StringDate()}
+            </h:column>
+        </h:dataTable>
+        </div>
+<!--        <br/>-->
+<!--        <h:link value="GO back" outcome="main"  styleClass="link-go"/>-->
+    </f:view>
+</h:body>
+<link rel="stylesheet" type="text/css" href="resources/Main.css"/>
+<script type="text/javascript" src="points_page.js" />
+</html>
+
